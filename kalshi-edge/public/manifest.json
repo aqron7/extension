@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "KalshiEdge",
+  "version": "1.0.0",
+  "description": "Price charts, watchlists, and alerts for Kalshi prediction markets",
+  "permissions": ["storage", "alarms", "notifications", "identity"],
+  "host_permissions": [
+    "https://kalshi.com/*",
+    "https://api.kalshi.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.ts",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://kalshi.com/*"],
+      "js": ["src/content/index.tsx"]
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/index.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
